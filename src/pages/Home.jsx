@@ -8,7 +8,9 @@ function Home() {
 
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/movie/popular?language=ko-KR&api_key=ac770053b0b8a5509c03c3d6e2110597"
+      `https://api.themoviedb.org/3/movie/popular?language=ko-KR&api_key=${
+        import.meta.env.VITE_APP_MOVIE_API_KEY
+      }`
     )
       .then((res) => res.json())
       .then((res) => {
