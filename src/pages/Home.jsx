@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import MovieItem from "../components/MovieItem";
 
 function Home() {
   const [movies, setMovies] = useState([]);
@@ -16,22 +17,21 @@ function Home() {
   }, []);
 
   return (
-    <>
-      <Carousel
-        showThumbs
-        autoPlay
-        infiniteLoop
-        showStatus={false}
-        transitionTime={3}
-      >
-        {movies.map((movie) => (
-          <img
-            src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
-            alt="영화 포스터"
-          />
-        ))}
-      </Carousel>
-    </>
+    <div className="w-full">
+      <div>
+        <Carousel
+          showThumbs={false}
+          autoPlay
+          infiniteLoop
+          showStatus={false}
+          transitionTime={3}
+        >
+          {movies.map((movie) => (
+            <MovieItem key={movie.id} movie={movie} />
+          ))}
+        </Carousel>
+      </div>
+    </div>
   );
 }
 
